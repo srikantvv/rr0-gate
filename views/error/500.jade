@@ -1,0 +1,19 @@
+extends ../layouts/error
+
+block head
+  title #{application} &middot; 500
+
+block content
+
+  .mini-tron.bg-brand5.brand3
+    h1 500 Error!&nbsp;&nbsp;:(
+    p That is unfortunate!
+    p Error: #{error.message}
+  .container
+    .row
+      .col-md-12
+        br
+        if error.stack
+          pre.well= error.stack
+        else
+          p An error ocurred!

@@ -1,0 +1,30 @@
+footer.footer.bg-black
+  .container
+    p
+      | Copyright © #{moment().format('YYYY')}&nbsp;
+      img.hidden-xs(src='/favicon.png', width='50px')
+      | &nbsp;#{application}, all rights reserved. |&nbsp;
+      a(href='/terms') Terms of Use&nbsp;
+      | |&nbsp;
+      a(href='/privacy') Privacy Policy
+
+//- Javascript
+//- ! Place scripts in footer for faster page rendering !
+script(src='/socket.io/socket.io.v1.0.0.js')
+script(src='/lib/jquery/dist/jquery.min.js')
+//- Then we use jQuery to async load everything else!
+script.
+  $(document).ready(function() {
+    // Load main project js
+    $.getScript('/js/#{application}.min.js');
+  });
+  // socket.io processing
+  var socket = io.connect();
+  // Send inital connection
+  socket.on('connect', function () {
+    socket.send(window.location.href);
+  });
+  // send page views
+  window.onhashchange = function () {
+    socket.send(window.location.href);
+  };

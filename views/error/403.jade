@@ -1,0 +1,18 @@
+extends ../layouts/error
+
+
+block head
+  title #{application} &middot; 403
+
+block content
+
+  .mini-tron.bg-brand5.brand3
+    h1 403 Forbidden!&nbsp;&nbsp;:(
+    p You tried to reach #{url}.
+    p Error: #{error.message}
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        br
+        br
+        img.img-responsive.center-block(src='img/403.gif')

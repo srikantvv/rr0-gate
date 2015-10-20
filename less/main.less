@@ -1,0 +1,465 @@
+@import "bootstrap.less";
+@import "../public/lib/bootstrap-social/bootstrap-social.less";
+@import "../public/lib/font-awesome/less/font-awesome.less";
+// @import (less) "../lib/animate.css/animate.css";
+@fa-font-path: "../lib/font-awesome/fonts";
+@font-family-sans-serif:  "Open Sans", Helvetica, Arial, sans-serif;
+
+/**
+ * First, import base frameworks:
+ *  - Project Font(s)  http://www.google.com/fonts/specimen/Open+Sans
+ *  - Bootstrap        http://getbootstrap.com/
+ *  - Font Awesome     http://fontawesome.io/
+ *  //- Animate.css      http://daneden.github.io/animate.css
+ *
+ *  Now add your own Bootstrap overrides and new styles below:
+ */
+
+/**
+ * Colors
+ *
+ * This needs some explaining.  I'd rather keep colors separate
+ * from widgets. That way I can just use HTML markup to colorize
+ * widgets in a semantic way:
+ *
+ *   <div class="jumbotron bg-blue white"></div>
+ *
+ * This means give me a jumbotron with a blue background and white text
+ *
+ *   <div class="jumbotron bg-green orange"></div>
+ *
+ * Green background, orange text, get it?
+ *
+ * This separation is very practical in use. However, if I
+ * make a widget that is designed with a particular color
+ * I use the color in the name. Ex: .btn-white or .navbar-yellow
+ *
+ * I usually designate brand colors only but this
+ * is an example so I included a fuller set.
+ *
+ */
+
+// Boostrap colors in case you need to override them
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-info:    #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger:  #d9534f;
+
+// Brand Color Scheme (checkout: https://kuler.adobe.com/explore)
+@brand1:        #377DB5;  // Blue
+@brand2:        #70CCF2;  // Aqua
+@brand3:        #FFDBC2;  // Salmon
+@brand4:        #FF7B64;  // Orange
+@brand5:        #E61D46;  // Red
+
+// Brand Colors
+.brand1 {       color: @brand1; }
+.brand2 {       color: @brand2; }
+.brand3 {       color: @brand3; }
+.brand4 {       color: @brand4; }
+.brand5 {       color: @brand5; }
+
+// Brand Backgrounds
+.bg-brand1 {    background-color: @brand1; }
+.bg-brand2 {    background-color: @brand2; }
+.bg-brand3 {    background-color: @brand3; }
+.bg-brand4 {    background-color: @brand4; }
+.bg-brand5 {    background-color: @brand5; }
+
+// Bootstrap provides an incomplete grayscale
+// but the ones commented below are coming
+// from Bootstrap:
+
+// Gray Scale
+@white:             #FFFFFF;
+// @gray-lighter
+// @gray-light
+// @gray
+// @gray-dark
+// @gray-darker
+@black:             #111111;
+
+// Gray Scale
+.white {            color: @white; }
+.gray-lighter {     color: @gray-lighter; }
+.gray-light {       color: @gray-light; }
+.gray {             color: @gray; }
+.gray-dark {        color: @gray-dark; }
+.gray-darker {      color: @gray-darker; }
+.black {            color: @black; }
+
+// Gray Scale Backgrounds
+.bg-white {         background-color: @white; }
+.bg-gray-lighter {  background-color: @gray-lighter; }
+.bg-gray-light {    background-color: @gray-light; }
+.bg-gray {          background-color: @gray; }
+.bg-gray-dark {     background-color: @gray-dark; }
+.bg-gray-darker {   background-color: @gray-darker; }
+.bg-black {         background-color: @black; }
+
+// Other Colors http://clrs.cc/
+
+// Cool
+@aqua:          #7FDBFF;
+@blue:          #0074D9;
+@navy:          #001F3F;
+@teal:          #39CCCC;
+@green:         #2ECC40;
+@olive:         #3D9970;
+@lime:          #01FF70;
+
+// Warm
+@yellow:        #FFDC00;
+@orange:        #FF851B;
+@red:           #FF4136;
+@pink:          #FF748A;
+@fuchsia:       #F012BE;
+@purple:        #B10DC9;
+@maroon:        #85144B;
+
+// Colors
+.pink {         color: @pink; }
+.navy {         color: @navy; }
+.blue {         color: @blue; }
+.aqua {         color: @aqua; }
+.teal {         color: @teal; }
+.olive {        color: @olive; }
+.green {        color: @green; }
+.lime {         color: @lime; }
+.yellow {       color: @yellow; }
+.orange {       color: @orange; }
+.red {          color: @red; }
+.fuchsia {      color: @fuchsia; }
+.purple {       color: @purple; }
+.maroon {       color: @maroon; }
+
+// Backgrounds
+.bg-navy {      background-color: @navy; }
+.bg-blue {      background-color: @blue; }
+.bg-aqua {      background-color: @aqua; }
+.bg-teal {      background-color: @teal; }
+.bg-olive {     background-color: @olive; }
+.bg-green {     background-color: @green; }
+.bg-lime {      background-color: @lime; }
+.bg-yellow {    background-color: @yellow; }
+.bg-orange {    background-color: @orange; }
+.bg-red {       background-color: @red; }
+.bg-pink {      background-color: @pink; }
+.bg-fuchsia {   background-color: @fuchsia; }
+.bg-purple {    background-color: @purple; }
+.bg-maroon {    background-color: @maroon; }
+
+/**
+ * Scaffolding
+ */
+
+html {
+  /* Sticky Footer Styles Below */
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Account for fixed navbar */
+  padding-top: 50px;
+  /* Sticky Footer: margin bottom = footer height */
+  margin-bottom: 80px;
+}
+h1, h2, h3,
+.h1, .h2, .h3 {
+  font-weight: 300;
+}
+dl {
+  font-size: 18px;
+}
+dt {
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+dd {
+  margin-bottom: 5px;
+}
+
+/**
+ * Navbar
+ */
+
+@navbar-default-brand-color:       @gray-darker;
+@navbar-default-link-hover-bg:     darken(@navbar-default-bg, 6.5%);
+
+.navbar-nav .profile-image {
+  width: 30px;
+  height: 30px;
+  margin: -15px 15px -15px 0;
+}
+.navbar-brand {
+  background-image: url(/favicon.png);
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: left center;
+  padding-left: 45px;
+  margin-top: -1px;
+  margin-left: 15px;
+}
+
+/**
+ * Flash Alerts
+ */
+
+@alert-border-radius: 0px;
+
+.alert {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+/*
+ * Home Page
+ */
+
+@jumbotron-bg:            @brand1;
+@jumbotron-heading-color: @white;
+
+.jumbotron {
+  margin-bottom: 0px;
+  h1 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 26px;
+  }
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    margin-bottom: 0px;
+    h1 {
+      font-size: 65px;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 40px;
+    }
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    li {
+      line-height: 1;
+      margin: 20px;
+      font-size: 20px;
+      font-weight: 300;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+}
+@media (min-width: 1170px) {
+  .jumbotron {
+    h1 {
+      font-size: 70px;
+    }
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 34px;
+    }
+    li {
+      line-height: 1;
+      margin: 20px;
+      font-size: 26px;
+      font-weight: 300;
+    }
+    p {
+      font-size: 22px;
+    }
+  }
+}
+.jumbotron .btn {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 22px;
+}
+.btn-white {
+  color: #333;
+  background-color: @white;
+}
+.btn-white:hover,
+.btn-white:focus,
+.btn-white:active {
+  color: @white;
+  background-color: transparent;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.6);
+  border-color: @white;
+}
+
+@media (min-width: 768px) {
+  .jumbotron .btn {
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 28px;
+  }
+}
+
+/*
+ * Minitron
+ * Jumbotron-esque page headers
+ */
+
+.mini-tron {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  position: relative;
+  padding: 30px 15px;
+  text-align: center;
+  h1 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+  p {
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .container {
+    position: relative;
+  }
+}
+@media (min-width: 768px) {
+  .mini-tron {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    h1 {
+      font-size: 45px;
+      line-height: 1;
+    }
+    p {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+  }
+}
+
+/**
+ * Footer
+ */
+
+.footer {
+  text-align: center;
+  /* Sticky footer styles below */
+  position: absolute;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  /* Sticky footer styles end */
+  p {
+    font-size: 14px;
+    color: darken(@gray-light, 15%);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    a {
+      text-decoration: none;
+      color: @gray-light;
+      &:hover {
+        color: @gray-lighter;
+      }
+    }
+  }
+}
+
+/**
+ * API Page
+ */
+
+.btn-api {
+  width: 140px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  li.api {
+    font-size: 20px;
+  }
+}
+
+/**
+ * Dashboard Page
+ */
+
+.dashboard {
+  text-align: center;
+  p {
+    font-size: 50px;
+    line-height: 1;
+    color: @red;
+    text-shadow: 1px 1px 1px @black;
+  }
+}
+@media (min-width: 768px) {
+  .dashboard {
+    p {
+      font-size: 96px;
+    }
+  }
+}
+
+/**
+ * Colors Page
+ */
+
+.pnl {
+  padding: 15px;
+}
+
+/**
+ * Privacy Page
+ */
+
+.table.privacy {
+  text-align: left;
+  margin-top: 30px;
+  tbody>tr>td {
+    border-top: 0px;
+    font-weight: 300;
+    font-size: 20px;
+  }
+}
+
+/**
+ * Panel Headers Like Buttons
+ */
+
+.panel-heading:hover {
+  background: darken(#f5f5f5, 15%);
+}
+a.noDecoration {
+  text-decoration: none;
+}
+a.noDecoration:hover {
+  text-decoration: none;
+}
+
+/**
+ * Other Media/Responsiveness
+ */
+
+@media (max-width: 480px) {
+}
+@media (max-width: 992px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1170px) {
+}
