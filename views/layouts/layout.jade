@@ -1,9 +1,10 @@
 doctype html
-html
+html(lang="en")
   include ../partials/head
   body
     include ../partials/navigation
     include ../partials/flash
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places')
     block content
     include ../partials/footer
     block scripts
